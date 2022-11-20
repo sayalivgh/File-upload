@@ -1,0 +1,53 @@
+.login-form-parent{
+    height: inherit;
+    display: flex;
+}
+
+.login-image-container{
+    display: flex;
+    align-items: center;
+    background-color: aliceblue;
+    width: 50%;
+}
+.login-image-container img{
+    display: block;
+    width: 80%;
+}
+.login-form{
+    margin: auto;
+    width: 25%;
+}
+.login-form form{
+    display: flex;
+    flex-direction: column; 
+}
+.horizontal_line{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgb(28, 136, 171);
+    margin: 12px 0;
+}
+.dot{
+    flex: 1;
+    border-bottom: 1px solid lightblue;
+}
+.new-user-button{
+    width: 100%;
+}
+@media only screen and (max-width: 768px) {
+    .login-form-parent{
+        flex-direction: column;
+        padding: 5%;
+    }
+    .login-image-container{
+        width: 100%;
+    }
+    .login-image-container img{
+        display: block;
+        width: 100%;
+    }
+    .login-form{
+        width: 100%;
+    }
+}
