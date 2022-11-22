@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const corsOptions = require('./config/corsOptions');
@@ -6,8 +7,12 @@ const app = express();
 const PORT = process.env.port || 3500
 const cookieParser = require('cookie-parser');
 const credentials = require('./middleware/credentials');
+const mongoose = require('mongoose');
+const connectDB = require('./config/dbConnection');
 
-app.use(credentials)
+
+connectDB();
+app.use(credentials);
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
@@ -20,4 +25,7 @@ app.use('/logout', require('./routes/logout'));
 app.use(verifyJWT); //after this every route will be protected with jwt
 app.use('/fileupload', require('./routes/api/fileupload'));
 
-app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+mongoose.connection.once('open',() => {
+   app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+});
+
