@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { regexPatterns, messages } from '../../utilities/constants';
+import axios from 'axios';
 
 const SignUpPage = () => { 
     const initialInputs = {
@@ -29,6 +30,13 @@ const SignUpPage = () => {
                 email,
                 password
             }
+
+            axios.post('http://localhost:3500/register', payload)
+            .then((response) => {
+                console.log("Resp", response);
+            }).catch((error) => {
+                console.log("Error: ", error.message);
+            })
         }
     }
 

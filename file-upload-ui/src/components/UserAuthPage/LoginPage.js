@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
@@ -39,7 +39,9 @@ const Login = ({ setPage }) => {
             [inputType]: event.target.value
         });
     }
-    
+
+   
+
     return (
         <>
         <Form noValidate onSubmit={handleSubmit} className="form">
